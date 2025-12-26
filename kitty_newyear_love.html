@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Kitty ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        overflow: hidden;
+        color: white;
+        text-align: center;
+    }
+
+    .card {
+        background: rgba(0,0,0,0.35);
+        padding: 30px;
+        border-radius: 25px;
+        width: 90%;
+        max-width: 420px;
+        animation: fade 1s ease;
+        box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        min-height: 120px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background: #ff2e63;
+        color: white;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ff0844;
+        transform: scale(1.05);
+    }
+
+    @keyframes fade {
+        from {opacity: 0; transform: scale(0.9);}
+        to {opacity: 1; transform: scale(1);}
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(255,255,255,0.6);
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        from {transform: translateY(100vh); opacity: 0;}
+        to {transform: translateY(-10vh); opacity: 1;}
+    }
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_8f16a0e5c7.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="content">
+    <h1>Hey Kitty 🐱✨</h1>
+    <p id="text"></p>
+    <button onclick="next1()">Tap gently 💕</button>
+</div>
+
+<script>
+const hearts = () => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+};
+setInterval(hearts, 400);
+
+function typeText(element, text, i = 0) {
+    if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        setTimeout(() => typeText(element, text, i + 1), 40);
+    }
+}
+
+const textEl = document.getElementById("text");
+typeText(textEl, "I made something special… just for you 💫");
+
+function next1() {
+    document.getElementById("content").innerHTML = `
+        <h1>🎆 Happy New Year 2026 🎆</h1>
+        <p id="t1"></p>
+        <button onclick="next2()">Next ✨</button>
+    `;
+    typeText(document.getElementById("t1"),
+    "A new year begins…\nand I can’t imagine starting it\nwithout you somewhere in it 🌙");
+}
+
+function next2() {
+    document.getElementById("content").innerHTML = `
+        <h1>Kitty 💖</h1>
+        <p id="t2"></p>
+        <button onclick="next3()">Go on ❤️</button>
+    `;
+    typeText(document.getElementById("t2"),
+    "One month of chats…\nOne call…\nYet somehow you managed to make\nmy days brighter and my nights softer ✨\n\nYour flirting, your vibe… it felt different.");
+}
+
+function next3() {
+    document.getElementById("content").innerHTML = `
+        <h1>❤️ I Love You ❤️</h1>
+        <p id="t3"></p>
+    `;
+    typeText(document.getElementById("t3"),
+    "Kitty… I don’t feel this as friendship.\nI feel this as something real.\n\nI truly like you.\nI love you.\n\nWill you start this new year with me? 🌹");
+}
+</script>
+
+</body>
+</html>
