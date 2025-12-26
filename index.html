@@ -2,139 +2,209 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Kitty ❤️</title>
+<title>For Kitty 🐱</title>
+
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        font-family: 'Segoe UI', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        overflow: hidden;
-        color: white;
-        text-align: center;
-    }
+body{
+    margin:0;
+    height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+}
 
-    .card {
-        background: rgba(0,0,0,0.35);
-        padding: 30px;
-        border-radius: 25px;
-        width: 90%;
-        max-width: 420px;
-        animation: fade 1s ease;
-        box-shadow: 0 0 25px rgba(255,255,255,0.2);
-    }
+.card{
+    background:rgba(0,0,0,0.45);
+    padding:30px;
+    border-radius:25px;
+    width:90%;
+    max-width:420px;
+    box-shadow:0 0 35px rgba(255,255,255,0.15);
+    animation:fade 1.2s ease;
+}
 
-    h1 {
-        font-size: 28px;
-        margin-bottom: 15px;
-    }
+h1{
+    font-size:26px;
+    margin-bottom:15px;
+}
 
-    p {
-        font-size: 18px;
-        line-height: 1.6;
-        min-height: 120px;
-    }
+p{
+    font-size:18px;
+    line-height:1.75;
+    white-space:pre-line;
+    min-height:170px;
+}
 
-    button {
-        margin-top: 20px;
-        padding: 12px 30px;
-        font-size: 16px;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        background: #ff2e63;
-        color: white;
-        transition: 0.3s;
-    }
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    background:#ff6b81;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
 
-    button:hover {
-        background: #ff0844;
-        transform: scale(1.05);
-    }
+button:hover{
+    background:#ff4757;
+}
 
-    @keyframes fade {
-        from {opacity: 0; transform: scale(0.9);}
-        to {opacity: 1; transform: scale(1);}
-    }
+@keyframes fade{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
 
-    .heart {
-        position: absolute;
-        color: rgba(255,255,255,0.6);
-        font-size: 20px;
-        animation: float 6s linear infinite;
-    }
+.float{
+    position:absolute;
+    font-size:20px;
+    animation:rise 8s linear infinite;
+    opacity:0.7;
+}
 
-    @keyframes float {
-        from {transform: translateY(100vh); opacity: 0;}
-        to {transform: translateY(-10vh); opacity: 1;}
-    }
+@keyframes rise{
+    from{transform:translateY(100vh); opacity:0;}
+    to{transform:translateY(-10vh); opacity:1;}
+}
+
+.catgif{
+    width:120px;
+    border-radius:15px;
+    margin:10px auto;
+    box-shadow:0 0 15px rgba(255,255,255,0.2);
+}
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2023/03/13/audio_8f16a0e5c7.mp3" type="audio/mpeg">
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2023/02/06/audio_8e4c3c2b5e.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="content">
-    <h1>Hey Kitty 🐱✨</h1>
+    <h1>Hey Kitty 🐱🌙</h1>
     <p id="text"></p>
-    <button onclick="next1()">Tap gently 💕</button>
+    <button onclick="start()">Begin slowly ✨</button>
 </div>
 
 <script>
-const hearts = () => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-};
-setInterval(hearts, 400);
+const emojis=["🐱","🌙","✨","🌸","🐾","💫"];
+setInterval(()=>{
+    const e=document.createElement("div");
+    e.className="float";
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left=Math.random()*100+"vw";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),8000);
+},600);
 
-function typeText(element, text, i = 0) {
-    if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        setTimeout(() => typeText(element, text, i + 1), 40);
+function typeText(el,text,i=0){
+    if(i<text.length){
+        el.innerHTML+=text.charAt(i);
+        setTimeout(()=>typeText(el,text,i+1),75);
     }
 }
 
-const textEl = document.getElementById("text");
-typeText(textEl, "I made something special… just for you 💫");
+typeText(document.getElementById("text"),
+"I made something quiet...\njust for you 🌙");
 
-function next1() {
-    document.getElementById("content").innerHTML = `
-        <h1>🎆 Happy New Year 2026 🎆</h1>
+function start(){
+    document.getElementById("music").play();
+    document.getElementById("content").innerHTML=`
+        <h1>Happy New Year ✨</h1>
         <p id="t1"></p>
-        <button onclick="next2()">Next ✨</button>
-    `;
+        <button onclick="next2()">Continue 🕯️</button>`;
     typeText(document.getElementById("t1"),
-    "A new year begins…\nand I can’t imagine starting it\nwithout you somewhere in it 🌙");
+`Naya saal shuru hota hai,
+lekin kuch feelings
+dheere aati hain.
+
+Shor ke bina,
+jaldi ke bina.
+
+Bas ek pal…
+jo thehar jaaye 🌙`);
 }
 
-function next2() {
-    document.getElementById("content").innerHTML = `
-        <h1>Kitty 💖</h1>
+function next2(){
+    document.getElementById("content").innerHTML=`
+        <h1>Kitty 🐱🌸</h1>
+        <img class="catgif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
         <p id="t2"></p>
-        <button onclick="next3()">Go on ❤️</button>
-    `;
+        <button onclick="next3()">Go on ✨</button>`;
     typeText(document.getElementById("t2"),
-    "One month of chats…\nOne call…\nYet somehow you managed to make\nmy days brighter and my nights softer ✨\n\nYour flirting, your vibe… it felt different.");
+`Ek mahina baatein,
+ek call…
+
+Aur phir bhi,
+tumhari presence
+kaafi apni si lagne lagi.
+
+Jaise koi billi 🐾
+jo dheere se aaye,
+aur ek kone mein
+baith jaaye.`);
 }
 
-function next3() {
-    document.getElementById("content").innerHTML = `
-        <h1>❤️ I Love You ❤️</h1>
+function next3(){
+    document.getElementById("content").innerHTML=`
+        <h1>Something honest 🌙</h1>
         <p id="t3"></p>
-    `;
+        <button onclick="next4()">Stay a little 🐾</button>`;
     typeText(document.getElementById("t3"),
-    "Kitty… I don’t feel this as friendship.\nI feel this as something real.\n\nI truly like you.\nI love you.\n\nWill you start this new year with me? 🌹");
+`Main yahan impress karne
+nahi aaya.
+
+Main bas itna kehna chahta hoon,
+kuch log
+jaldi nahi samajh aate.
+
+Unke liye
+time chahiye 🌱`);
+}
+
+function next4(){
+    document.getElementById("content").innerHTML=`
+        <h1>One quiet truth 🐱</h1>
+        <p id="t4"></p>
+        <button onclick="next5()">Almost there 🌙</button>`;
+    typeText(document.getElementById("t4"),
+`Jab aane wale dinon
+ke baare mein sochta hoon,
+
+tumhara naam
+shor nahi karta.
+
+Bas chupchaap
+wahaan hota hai 🌸`);
+}
+
+function next5(){
+    document.getElementById("content").innerHTML=`
+        <h1>Kitty 🌙❤️</h1>
+        <p id="t5"></p>
+        <button onclick="whatsapp()">Talk to Omkar 💬</button>`;
+    typeText(document.getElementById("t5"),
+`Yeh excitement nahi hai.
+Yeh sukoon hai.
+Yeh warmth hai.
+
+Main tumhare kareeb
+mehsoos karta hoon.
+
+Agar kabhi
+tum bhi aisa mehsoos karo —
+main yahin hoon 🐾✨`);
+}
+
+function whatsapp(){
+    window.open("https://wa.me/?text=Hey%20Omkar%2C%20I%20saw%20your%20page%20%F0%9F%90%B1%20let%E2%80%99s%20talk%20%F0%9F%92%AC","_blank");
 }
 </script>
 
